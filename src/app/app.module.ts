@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemCustomerService } from './services/InMemCustomerService';
 
 @NgModule({
   declarations: [
@@ -16,9 +19,11 @@ import { MatTableModule } from '@angular/material/table';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemCustomerService, { dataEncapsulation: false })
   ],
-  providers: [],
+  providers: [InMemCustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
