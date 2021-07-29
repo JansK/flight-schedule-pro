@@ -7,11 +7,19 @@ import { Customer } from '../models/customer';
   providedIn: 'root'
 })
 export class CustomersService {
-  private customersUrl = 'api/customers';
+  private customersUrl = 'api/customers/';
 
   constructor(private http: HttpClient) { }
 
   getCustomers(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.customersUrl)
+    return this.http.get<Customer[]>(this.customersUrl);
+  }
+
+  editCustomer(customer: Customer): Observable<Customer> {
+    return this.http.put<Customer>(this.customersUrl + customer.id, customer);
+  }
+
+  deleteCustomer(id: number): Observable<any> {
+    return this.http.delete(this.customersUrl + id);
   }
 }

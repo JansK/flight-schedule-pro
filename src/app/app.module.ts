@@ -11,10 +11,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemCustomerService } from './services/InMemCustomerService';
 import { CustomersService } from './services/customers.service';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { DialogEditCustomerComponent } from './dialog-edit-customer/dialog-edit-customer.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogEditCustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -23,10 +31,20 @@ import { CustomersService } from './services/customers.service';
     MatToolbarModule,
     MatTableModule,
     MatIconModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemCustomerService, { dataEncapsulation: false })
+    HttpClientInMemoryWebApiModule.forRoot(InMemCustomerService, { dataEncapsulation: false }),
+    ReactiveFormsModule
   ],
-  providers: [CustomersService],
+  providers: [
+    CustomersService,
+    MatSnackBar,
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
+    MatDialog
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,25 @@
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-table {
+  width: 100%;
+  margin: 2em 2em;
+  margin-bottom: 0px;
+}
+
+.mat-column-email {
+  /* flex: 0 0 30%; */
+  max-width: fit-content;
+  min-width: 25ch;
+}
+
+.mat-column-phoneNumber {
+  /* flex: 0 0 30%; */
+  min-width: 10ch;
+}
+
+.mat-column-actions {
+  /* flex: 0 0 30%; */
+}
