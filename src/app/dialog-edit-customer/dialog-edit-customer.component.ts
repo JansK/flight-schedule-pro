@@ -90,13 +90,12 @@ export class DialogEditCustomerComponent implements OnInit {
   }
 
   buildNewCustomer() {
-    return new Customer(
-      null,
-      this.customerForm.get('firstName')!.value,
-      this.customerForm.get('lastName')!.value,
-      this.customerForm.get('email')!.value,
-      this.customerForm.get('phoneNumber')!.value
-    );
+    return {
+      firstName: this.customerForm.get('firstName')!.value,
+      lastName: this.customerForm.get('lastName')!.value,
+      email: this.customerForm.get('email')!.value,
+      phoneNumber: this.customerForm.get('phoneNumber')!.value
+    };
   }
 
   buildEditedCustomer() {
