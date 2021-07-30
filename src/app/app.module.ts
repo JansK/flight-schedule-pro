@@ -18,6 +18,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemCustomerService, { dataEncapsulation: false }),
+    NgxMaskModule.forRoot(),
     ReactiveFormsModule
   ],
   providers: [

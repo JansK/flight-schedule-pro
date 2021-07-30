@@ -1,11 +1,11 @@
 export class Customer {
-    id = 0;
+    id?;
     firstName = '';
     lastName = '';
     email = '';
     phoneNumber = '';
 
-    constructor(id: number, firstName: string, lastName: string, email: string, phoneNumber: string) {
+    constructor(id: any, firstName: string, lastName: string, email: string, phoneNumber: string) {
         this.id = id || 0;
         this.firstName = firstName || '';
         this.lastName = lastName || '';

@@ -20,7 +20,7 @@ import { DialogEditCustomerComponent } from './dialog-edit-customer/dialog-edit-
 export class AppComponent implements OnInit, AfterViewInit {
   constructor(private customerService: CustomersService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
-  title = 'Flight Schedule Pro Customer List';
+  title = 'Flight Schedule Pro';
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNumber', 'actions'];
   tableData: Customer[] = [];
   @ViewChild(MatSort)
@@ -41,20 +41,30 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openAddDialog(customer: Customer) {
-    this.dialog.open(DialogEditCustomerComponent, {
+  openAddDialog() {
+    let dialogRef = this.dialog.open(DialogEditCustomerComponent, {
       data: {
         mode: 'add',
-        customer: customer
+        customer: null
+      }
+    });
+    dialogRef.afterClosed().subscribe(response => {
+      if (response && response === 'SUCCESS') {
+        this.getCustomers();
       }
     });
   }
 
   openEditDialog(customer: Customer) {
-    this.dialog.open(DialogEditCustomerComponent, {
+    let dialogRef = this.dialog.open(DialogEditCustomerComponent, {
       data: {
         mode: 'edit',
         customer: customer
+      }
+    });
+    dialogRef.afterClosed().subscribe(response => {
+      if (response && response === 'SUCCESS') {
+        this.getCustomers();
       }
     });
   }

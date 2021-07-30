@@ -15,6 +15,10 @@ export class CustomersService {
     return this.http.get<Customer[]>(this.customersUrl);
   }
 
+  addCustomer(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(this.customersUrl + customer.id, customer);
+  }
+
   editCustomer(customer: Customer): Observable<Customer> {
     return this.http.put<Customer>(this.customersUrl + customer.id, customer);
   }
